@@ -1,0 +1,28 @@
+app:
+  name: "bluebell"
+  mode: "dev"
+  version: "0.1.0"
+  port: 8080
+
+log:
+  level: "debug"
+  filename: "bluebell_supervisor.log"
+  max_size: 200
+  max_age: 30
+  max_backups: 7
+
+mysql:
+  host: "127.0.0.1"
+  port: "3306"
+  user: "root"
+  password: "root"
+  dbname: "bluebell"
+  max_open_connection: 20
+  max_idle_connection: 20
+
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  password: ""
+  db: 0
+  pool_size: 100
