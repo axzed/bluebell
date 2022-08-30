@@ -4,7 +4,8 @@ import (
 	"bluebell/dao/mysql"
 	"bluebell/dao/redis"
 	"bluebell/logger"
-	"bluebell/routes"
+	"bluebell/pkg/snowflake"
+	"bluebell/router"
 	"bluebell/settings"
 	"context"
 	"fmt"
@@ -50,8 +51,14 @@ func main() {
 	}
 	defer redis.Close()
 
+	// 初始化雪花算法生成ID
+	if err := snowflake.Init(viper.GetString("app.start_time"), viper.GetInt64("app.machine_id")); err != nil {
+		fmt.Printf("init snowflake failed", err)
+		return
+	}
+
 	// 5. 注册路由
-	r := routes.Setup()
+	r := router.Setup()
 
 	// 6. 启动服务 (优雅关机)
 	srv := &http.Server{
