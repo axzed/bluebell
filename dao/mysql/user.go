@@ -13,6 +13,12 @@ const secret = "axzed.com"
 // 把每一步数据库操作封装为函数
 // 待service层根据业务需求调用
 
+var (
+	ErrorUserExist       = errors.New("用户已存在")
+	ErrorUserNotExist    = errors.New("用户不存在")
+	ErrorInvalidPassword = errors.New("用户名或密码错误")
+)
+
 // CheckUserExist 检查数据库中是否已经存在该用户
 func CheckUserExist(username string) error {
 	sqlStr := `select count(user_id) from user where username = ?`
@@ -21,7 +27,7 @@ func CheckUserExist(username string) error {
 		return err
 	}
 	if count > 0 {
-		return errors.New("用户已存在")
+		return ErrorUserExist
 	}
 	return nil
 }
@@ -51,7 +57,7 @@ func Login(user *models.User) (err error) {
 	err = db.Get(user, sqlStr, user.Username)
 	if err == sql.ErrNoRows {
 		// 用户名不存在
-		return errors.New("用户不存在")
+		return ErrorUserNotExist
 	}
 	if err != nil {
 		// 查询数据库错误
@@ -61,7 +67,7 @@ func Login(user *models.User) (err error) {
 	password := encryptPassword(oPassword)
 	if password != user.Password {
 		// 密码不对
-		return errors.New("用户名密码错误")
+		return ErrorInvalidPassword
 	}
 	return
 }
