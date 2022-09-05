@@ -30,7 +30,7 @@ func main() {
 	}
 
 	// 2. 初始化日志
-	if err := logger.Init(settings.Conf.LogConfig); err != nil {
+	if err := logger.Init(settings.Conf.LogConfig, viper.GetString("app.mode")); err != nil {
 		fmt.Printf("init logger failed, err:%v\n", err)
 		return
 	}
