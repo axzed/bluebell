@@ -310,3 +310,30 @@
 {"level":"INFO","time":"2022-09-05T12:29:41.895+0800","caller":"logger/logger.go:82","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.000471}
 {"level":"INFO","time":"2022-09-05T12:29:48.992+0800","caller":"bluebell/main.go:88","msg":"Shutdown Server..."}
 {"level":"INFO","time":"2022-09-05T12:29:48.993+0800","caller":"bluebell/main.go:96","msg":"Server exiting"}
+{"level":"DEBUG","time":"2022-09-05T13:29:59.127+0800","caller":"bluebell/main.go:39","msg":"logger init success..."}
+{"level":"ERROR","time":"2022-09-05T13:31:18.645+0800","caller":"controller/user.go:86","msg":"service.Login failed","username":"xwc","error":"scannable dest type ptr with >1 columns (3) in result"}
+{"level":"INFO","time":"2022-09-05T13:31:18.645+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.029001}
+{"level":"ERROR","time":"2022-09-05T13:31:43.226+0800","caller":"controller/user.go:86","msg":"service.Login failed","username":"xwc","error":"scannable dest type ptr with >1 columns (3) in result"}
+{"level":"INFO","time":"2022-09-05T13:31:43.227+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0049996}
+{"level":"INFO","time":"2022-09-05T13:31:47.150+0800","caller":"bluebell/main.go:88","msg":"Shutdown Server..."}
+{"level":"INFO","time":"2022-09-05T13:31:47.151+0800","caller":"bluebell/main.go:96","msg":"Server exiting"}
+{"level":"DEBUG","time":"2022-09-05T13:39:30.108+0800","caller":"bluebell/main.go:39","msg":"logger init success..."}
+{"level":"ERROR","time":"2022-09-05T13:39:51.527+0800","caller":"controller/user.go:87","msg":"service.Login failed","username":"xwc","error":"用户名密码错误"}
+{"level":"INFO","time":"2022-09-05T13:39:51.528+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0105025}
+{"level":"INFO","time":"2022-09-05T13:40:03.199+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0044666}
+{"level":"INFO","time":"2022-09-05T13:40:41.966+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0050008}
+{"level":"ERROR","time":"2022-09-05T13:40:59.589+0800","caller":"controller/user.go:87","msg":"service.Login failed","username":"xw","error":"用户不存在"}
+{"level":"INFO","time":"2022-09-05T13:40:59.589+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.003}
+{"level":"INFO","time":"2022-09-05T13:42:32.774+0800","caller":"bluebell/main.go:88","msg":"Shutdown Server..."}
+{"level":"INFO","time":"2022-09-05T13:42:32.774+0800","caller":"bluebell/main.go:96","msg":"Server exiting"}
+{"level":"DEBUG","time":"2022-09-05T13:42:38.791+0800","caller":"bluebell/main.go:39","msg":"logger init success..."}
+{"level":"ERROR","time":"2022-09-05T13:43:01.747+0800","caller":"controller/user.go:71","msg":"Login with invalid param","error":"invalid character '}' looking for beginning of object key string"}
+{"level":"INFO","time":"2022-09-05T13:43:01.747+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0009854}
+{"level":"ERROR","time":"2022-09-05T13:43:14.569+0800","caller":"controller/user.go:71","msg":"Login with invalid param","error":"Key: 'ParamLogin.password' Error:Field validation for 'password' failed on the 'required' tag"}
+{"level":"INFO","time":"2022-09-05T13:43:14.569+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0004988}
+{"level":"ERROR","time":"2022-09-05T13:43:43.739+0800","caller":"controller/user.go:89","msg":"service.Login failed","username":"xwc","error":"用户名密码错误"}
+{"level":"INFO","time":"2022-09-05T13:43:43.739+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0084985}
+{"level":"ERROR","time":"2022-09-05T13:44:09.386+0800","caller":"controller/user.go:89","msg":"service.Login failed","username":"xwc","error":"用户名密码错误"}
+{"level":"INFO","time":"2022-09-05T13:44:09.387+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0049944}
+{"level":"INFO","time":"2022-09-05T13:56:44.655+0800","caller":"bluebell/main.go:88","msg":"Shutdown Server..."}
+{"level":"INFO","time":"2022-09-05T13:56:44.656+0800","caller":"bluebell/main.go:96","msg":"Server exiting"}

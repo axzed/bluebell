@@ -15,6 +15,8 @@ func Setup() *gin.Engine {
 
 	// 注册业务路由
 	r.POST("/signup", controller.SignUpHandler)
+	// 登录业务路由
+	r.POST("/login", controller.LoginHandler)
 
 	r.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, fmt.Sprintf("项目名称:%v\n", viper.GetString("app.name")))

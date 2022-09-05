@@ -12,7 +12,6 @@ import (
 
 // SignUpHandler 处理用户注册请求
 func SignUpHandler(c *gin.Context) {
-
 	// 1. 获取参数 & 参数校验
 	p := new(models.ParamSignUp)
 	err := c.ShouldBindJSON(p)
@@ -47,6 +46,7 @@ func SignUpHandler(c *gin.Context) {
 
 	// 2. 业务处理
 	if err = service.SignUp(p); err != nil {
+		zap.L().Error("service.SignUp failed", zap.String("username", p.Username), zap.Error(err))
 		c.JSON(http.StatusOK, gin.H{
 			"msg": "注册失败",
 		})
@@ -58,4 +58,45 @@ func SignUpHandler(c *gin.Context) {
 		"msg": "success",
 	})
 
+	return
+}
+
+// LoginHandler 处理用户登录请求
+func LoginHandler(c *gin.Context) {
+	// 1. 获取参数 & 参数校验
+	p := new(models.ParamLogin)
+	err := c.ShouldBindJSON(p)
+	if err != nil {
+		// 请求参数有误, 直接返回响应
+		zap.L().Error("Login with invalid param", zap.Error(err))
+		// 判断err是不是validator.ValidationErrors类型
+		errs, ok := err.(validator.ValidationErrors)
+		if !ok {
+			c.JSON(http.StatusOK, gin.H{
+				"msg": err.Error(),
+			})
+			return
+		}
+		// 返回由validator检测出来的参数错误 加入了翻译器和取出结构体名称
+		c.JSON(http.StatusOK, gin.H{
+			"msg": removeTopStruct(errs.Translate(trans)),
+		})
+		return
+	}
+
+	// 2.业务逻辑处理
+	if err := service.Login(p); err != nil {
+		zap.L().Error("service.Login failed", zap.String("username", p.Username), zap.Error(err))
+		c.JSON(http.StatusOK, gin.H{
+			"msg": "用户或密码错误",
+		})
+		return
+	}
+
+	// 3.返回响应
+	c.JSON(http.StatusOK, gin.H{
+		"msg": "登录成功",
+	})
+
+	return
 }

@@ -8,6 +8,7 @@ import (
 	"bluebell/pkg/snowflake"
 )
 
+// SignUp 处理用户注册业务逻辑
 func SignUp(p *models.ParamSignUp) (err error) {
 	// 1.判断用户是否存在
 	if err = mysql.CheckUserExist(p.Username); err != nil {
@@ -26,4 +27,13 @@ func SignUp(p *models.ParamSignUp) (err error) {
 
 	// 3.保存进数据库(其中对密码进行加密)
 	return mysql.InsertUser(&user)
+}
+
+// Login 处理用户登录逻辑
+func Login(p *models.ParamLogin) error {
+	user := &models.User{
+		Username: p.Username,
+		Password: p.Password,
+	}
+	return mysql.Login(user)
 }
