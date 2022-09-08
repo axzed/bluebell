@@ -356,3 +356,6 @@
 {"level":"INFO","time":"2022-09-07T20:41:37.388+0800","caller":"logger/logger.go:82","msg":"/login","status":200,"method":"POST","path":"/login","query":"username=xwc&password=123","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.1115026}
 {"level":"INFO","time":"2022-09-07T20:42:27.788+0800","caller":"bluebell/main.go:88","msg":"Shutdown Server..."}
 {"level":"INFO","time":"2022-09-07T20:42:27.789+0800","caller":"bluebell/main.go:96","msg":"Server exiting"}
+{"level":"DEBUG","time":"2022-09-08T20:33:41.504+0800","caller":"bluebell/main.go:39","msg":"logger init success..."}
+{"level":"INFO","time":"2022-09-08T20:33:51.273+0800","caller":"bluebell/main.go:88","msg":"Shutdown Server..."}
+{"level":"INFO","time":"2022-09-08T20:33:51.273+0800","caller":"bluebell/main.go:96","msg":"Server exiting"}
