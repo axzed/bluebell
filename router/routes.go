@@ -14,17 +14,20 @@ func Setup() *gin.Engine {
 	r := gin.New()
 	r.Use(logger.GinLogger(), logger.GinRecovery(true))
 
-	// 注册业务路由
-	r.POST("/signup", controller.SignUpHandler)
-	// 登录业务路由
-	r.POST("/login", controller.LoginHandler)
+	v1 := r.Group("/api/v1")
 
-	// 加入JWT验证中间件
-	r.GET("/ping", middlewares.JWTAuthMiddleware(), func(c *gin.Context) {
-		// token认证, 判断是否登录, 判断请求头中是否有有效的jwt
-		// 从请求头中取出token
-		c.String(http.StatusOK, "pong")
-	})
+	// 注册业务路由
+	v1.POST("/signup", controller.SignUpHandler)
+	// 登录业务路由
+	v1.POST("/login", controller.LoginHandler)
+
+	// 应用jwt应用中间件
+	v1.Use(middlewares.JWTAuthMiddleware())
+
+	{
+		v1.GET("/community", controller.CommunityHandler)
+		v1.GET("/community/:id", controller.CommunityDetailHandler)
+	}
 
 	r.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, fmt.Sprintf("项目名称:%v\n", viper.GetString("app.name")))
