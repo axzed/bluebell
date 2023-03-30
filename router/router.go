@@ -25,6 +25,8 @@ func Setup() *gin.Engine {
 	v1.GET("/community", controller.CommunityHandler)
 	v1.GET("/community/:id", controller.CommunityDetailHandler)
 	v1.GET("/post/:id", controller.GetPostDetailHandler)
+	v1.GET("/posts", controller.GetPostListHandler)
+
 	// 应用jwt应用中间件
 	v1.Use(middlewares.JWTAuthMiddleware())
 
