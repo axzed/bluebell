@@ -59,29 +59,26 @@ func SignUpHandler(c *gin.Context) {
 	return
 }
 
-// LoginHandler 处理用户登录请求
+// LoginHandler 登录
 func LoginHandler(c *gin.Context) {
-	// 1. 获取参数 & 参数校验
+	// 1.获取请求参数及参数校验
 	p := new(models.ParamLogin)
-	err := c.ShouldBindJSON(p)
-	if err != nil {
-		// 请求参数有误, 直接返回响应
+	if err := c.ShouldBindJSON(p); err != nil {
+		// 请求参数有误，直接返回响应
 		zap.L().Error("Login with invalid param", zap.Error(err))
-		// 判断err是不是validator.ValidationErrors类型
+		// 判断err是不是validator.ValidationErrors 类型
 		errs, ok := err.(validator.ValidationErrors)
 		if !ok {
 			ResponseError(c, CodeInvalidParam)
 			return
 		}
-		// 返回由validator检测出来的参数错误 加入了翻译器和取出结构体名称
-		ResponseErrorWithMsg(c, CodeInvalidPassword, removeTopStruct(errs.Translate(trans)))
+		ResponseErrorWithMsg(c, CodeInvalidParam, removeTopStruct(errs.Translate(trans)))
 		return
 	}
-
 	// 2.业务逻辑处理
-	token, err := service.Login(p)
+	user, err := service.Login(p)
 	if err != nil {
-		zap.L().Error("service.Login failed", zap.String("username", p.Username), zap.Error(err))
+		zap.L().Error("logic.Login failed", zap.String("username", p.Username), zap.Error(err))
 		if errors.Is(err, mysql.ErrorUserNotExist) {
 			ResponseError(c, CodeUserNotExist)
 			return
@@ -91,7 +88,9 @@ func LoginHandler(c *gin.Context) {
 	}
 
 	// 3.返回响应
-	ResponseSuccess(c, token)
-
-	return
+	ResponseSuccess(c, gin.H{
+		"user_id":   fmt.Sprintf("%d", user.UserID), // id值大于1<<53-1  int64类型的最大值是1<<63-1
+		"user_name": user.Username,
+		"token":     user.Token,
+	})
 }

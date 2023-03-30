@@ -418,3 +418,7 @@
 {"level":"DEBUG","time":"2023-03-30T21:52:12.531+0800","caller":"bluebell/main.go:39","msg":"logger init success..."}
 {"level":"INFO","time":"2023-03-30T21:52:38.614+0800","caller":"bluebell/main.go:88","msg":"Shutdown Server..."}
 {"level":"INFO","time":"2023-03-30T21:52:38.615+0800","caller":"bluebell/main.go:96","msg":"Server exiting"}
+{"level":"DEBUG","time":"2023-03-30T21:52:44.850+0800","caller":"bluebell/main.go:39","msg":"logger init success..."}
+{"level":"INFO","time":"2023-03-30T21:52:58.456+0800","caller":"logger/logger.go:82","msg":"/api/v1/posts","status":200,"method":"GET","path":"/api/v1/posts","query":"size=2&page=1","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0130177}
+{"level":"INFO","time":"2023-03-30T21:53:41.872+0800","caller":"logger/logger.go:82","msg":"/api/v1/post","status":200,"method":"POST","path":"/api/v1/post","query":"","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0186064}
+{"level":"INFO","time":"2023-03-30T21:53:50.798+0800","caller":"logger/logger.go:82","msg":"/api/v1/posts","status":200,"method":"GET","path":"/api/v1/posts","query":"size=2&page=1","ip":"127.0.0.1","user-agent":"apifox/1.0.0 (https://www.apifox.cn)","errors":"","cost":0.0185436}
